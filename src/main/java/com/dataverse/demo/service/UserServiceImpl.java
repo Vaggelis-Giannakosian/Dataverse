@@ -31,7 +31,7 @@ public class UserServiceImpl implements UserService {
 
             User savedUser = userRepository.save(user);
         }else{
-            throw new UserExistsException("Person with Afm: "+userDtoCreate.getUserEmail()+" exist ");
+            throw new UserExistsException("Person with email: "+userDtoCreate.getUserEmail()+" already exists ");
         }
 
     }
