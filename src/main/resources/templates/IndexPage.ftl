@@ -8,11 +8,10 @@
 </head>
 
 <body  >
-<nav class="navbar navbar-dark fixed-top bg-dark flex-md-nowrap p-0 shadow navbar-customised" >
-    <a class="header-nav-logo" href="/"><img
-                src="/styles/data_logo.jpg" alt=""></a>
 
-</nav>
+<#include "partials/navbarTop.ftl">
+
+
 <div class="container-fluid">
     <div class="row">
 
@@ -24,6 +23,9 @@
 
             <div class="text-center col-lg-3 lg-button" >
                 <a href="/login"><button type="button" class="btn btn-primary btn-block btn-lg">Please Login</button></a>
+                <br>
+                <p>Don't already have an account?</p>
+                <a href="/register "><p>Register Here</p></a>
             </div>
         </main>
 

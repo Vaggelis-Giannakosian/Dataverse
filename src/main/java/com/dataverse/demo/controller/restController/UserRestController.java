@@ -11,9 +11,11 @@ import org.springframework.web.bind.annotation.RestController;
 @RestController
 public class UserRestController {
 
-@Autowired
+    @Autowired
     private UserServiceImpl userService;
 
+
+//Controller to test the create user function
     @PostMapping(path="/api/User/create")
     public int AddCustomUser(@RequestBody UserDtoCreate userDtoCreate) throws UserExistsException {
         if(userDtoCreate!=null) {
