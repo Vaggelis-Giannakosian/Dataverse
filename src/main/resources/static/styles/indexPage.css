@@ -100,10 +100,16 @@ body {
 }
 
 
-.
+.header-nav-logo{
+    margin-left: 3px;
+}
 
 .lg-button{
 
     margin-top: 10%;
     margin-left: 36%;
+}
+
+.navbar-customised{
+    height: 10%;
 }

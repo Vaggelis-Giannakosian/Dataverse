@@ -8,8 +8,9 @@
 </head>
 
 <body  >
-<nav class="navbar navbar-dark fixed-top bg-dark flex-md-nowrap p-0 shadow" style="height: 9%;">
-    <a class="navbar-brand col-sm-3 col-md-2 mr-0"  "href="#">Index</a>
+<nav class="navbar navbar-dark fixed-top bg-dark flex-md-nowrap p-0 shadow navbar-customised" >
+    <a class="header-nav-logo" href="/"><img
+                src="/styles/data_logo.jpg" alt=""></a>
 
 </nav>
 <div class="container-fluid">
