@@ -21,9 +21,9 @@ public class RegisterValidator implements Validator {
         UserRegisterForm userRegisterForm = (UserRegisterForm) target;
 
         //here perform your checks
-        if (userRegisterForm.getEmail() == null) {
-            // add an error for the field called ‘email’
-            errors.rejectValue("email", "email is empty");
-        }
+//        if (userRegisterForm.getEmail() == null) {
+//            // add an error for the field called ‘email’
+//            errors.rejectValue("email", "email is empty");
+//        }
     }
 }

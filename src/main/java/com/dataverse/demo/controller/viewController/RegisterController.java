@@ -55,7 +55,7 @@ public class RegisterController {
 
         if (bindingResult.hasErrors()) {
             //have some error handling here, perhaps add extra error messages to the model
-            model.addAttribute(ERROR_MESSAGE, "an error occurred");
+//            model.addAttribute(ERROR_MESSAGE, "an error occurred");
             return "Register";
         }
         try{

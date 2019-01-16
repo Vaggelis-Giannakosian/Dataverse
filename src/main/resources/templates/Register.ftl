@@ -1,3 +1,4 @@
+<#import "/spring.ftl" as spring />
 <!doctype html>
 <html lang="en" class="bg-team index">
 <head>
@@ -12,10 +13,6 @@
 <#include "partials/navbarTop.ftl">
 
 
-<#--<div class="container-fluid">-->
-    <#--<div class="row">-->
-
-
 
             <div class="container" style="margin-top: 7%;">
                 <div class="row justify-content-center">
@@ -25,38 +22,61 @@
                                 <h1>Register</h1>
                             </div>
                         </div>
+
                    <form action="/register" method="post">
                         <div class="row align-items-center form-narrow" >
                             <div class="col mt-4">
-                                <input type="text" class="form-control" placeholder="First Name">
+                                <@spring.bind "userRegisterForm.firstName"/>
+                                <input type="text" class="form-control" name="firstName" placeholder="First Name">
+                                <#list spring.status.errorMessages as error>
+                                    <span>${error}</span>
+                                </#list>
                             </div>
                         </div>
                         <div class="row align-items-center form-narrow">
                             <div class="col mt-4">
-                                <input type="text" class="form-control" placeholder="Last Name">
+                                <@spring.bind "userRegisterForm.lastName"/>
+                                <input type="text" class="form-control" name="lastName" placeholder="Last Name">
+                                <#list spring.status.errorMessages as error>
+                                    <span>${error}</span>
+                                </#list>
                             </div>
                         </div>
                         <div class="row align-items-center mt-4 form-narrow">
                             <div class="col">
-                                <input type="email" class="form-control" placeholder="Email">
+                                <@spring.bind "userRegisterForm.email"/>
+                                <input type="email" class="form-control" name="email" placeholder="Email">
+                                <#list spring.status.errorMessages as error>
+                                    <span>${error}</span>
+                                </#list>
                             </div>
                         </div>
                         <div class="row align-items-center form-narrow">
                             <div class="col mt-4">
-                                <input type="text" class="form-control" placeholder="Company Name">
+                                <@spring.bind "userRegisterForm.company"/>
+                                <input type="text" class="form-control" name="company" placeholder="Company Name">
+
                             </div>
                         </div>
                         <div class="row align-items-center form-narrow">
                             <div class="col mt-4">
-                                <input type="text" class="form-control" placeholder="Phone Number">
+                                <@spring.bind "userRegisterForm.phoneNumber"/>
+                                <input type="text" class="form-control" name="phoneNumber" placeholder="Phone Number">
+                                <#list spring.status.errorMessages as error>
+                                    <span>${error}</span>
+                                </#list>
                             </div>
                         </div>
                         <div class="row align-items-center mt-4 form-narrow ">
                             <div class="col">
-                                <input type="password" class="form-control" placeholder="Password">
+                                <@spring.bind "userRegisterForm.password"/>
+                                <input type="password" class="form-control" name="password" placeholder="Password">
+                                <#list spring.status.errorMessages as error>
+                                    <span>${error}</span>
+                                </#list>
                             </div>
                             <div class="col">
-                                <input type="password" class="form-control" placeholder="Confirm Password">
+                                <input type="password" class="form-control" name="passwordConfirm" placeholder="Confirm Password">
                             </div>
                         </div>
                         <div class="row justify-content-start mt-4 form-narrow">
@@ -70,10 +90,6 @@
             </div>
 
         <#include "partials/scripts.ftl">
-    <#--</div>-->
-<#--</div>-->
-
-
 
 </body>
 </html>
