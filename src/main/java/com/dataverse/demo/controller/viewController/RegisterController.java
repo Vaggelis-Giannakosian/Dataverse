@@ -64,7 +64,7 @@ public class RegisterController {
             return "redirect:/";
         }catch (Exception ex) {
             model.addAttribute(REGISTER_FORM, userRegisterForm);
-            model.addAttribute("errorMessage", "Registration could not be complete. Email cannot be duplicate.");
+            model.addAttribute("errorMessage", "Registration could not be complete. Email already exists in Database.");
             return "Register";
         }
     }

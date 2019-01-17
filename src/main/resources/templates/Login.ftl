@@ -13,7 +13,7 @@
 <#include "partials/navbarTop.ftl">
 <form class="form-signin" name="my-form" onsubmit="return validform()" action="/login" method="POST">
     <img class="mb-4" src="/styles/square_logo.png" alt="" width="111" height="">
-    <h1 class="h3 mb-3 font-weight-normal">Please sign in</h1>
+    <h1 class="h3 mb-3 font-weight-normal">Sign in</h1>
     <label for="inputEmail" class="sr-only">Email address</label>
     <input name="username" type="email" id="inputEmail" class="form-control" placeholder="Email address" required autofocus>
     <label for="inputPassword" class="sr-only">Password</label>

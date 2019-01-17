@@ -2,15 +2,15 @@
     <div class="sidebar-sticky">
         <ul class="nav flex-column">
             <li class="nav-item">
-                <a class="nav-link " href="#">
+                <a class="nav-link " href="/home">
                     <span data-feather="home"></span>
-                    Home <span class="sr-only">(current)</span>
+                    Home <span class="sr-only"></span>
                 </a>
             </li>
             <li class="nav-item">
-                <a class="nav-link" href="#">
+                <a class="nav-link" href="/home/edit">
                     <span data-feather="users"></span>
-                    Users
+                    Profile
                 </a>
             </li>
 

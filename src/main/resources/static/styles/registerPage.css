@@ -116,5 +116,27 @@ body {
 }
 
 .form-narrow{
-    margin-bottom: -2%;
+    margin-bottom: -4%;
+}
+
+.error-message{
+    color:darkred;
+}
+
+.form-label{
+    margin-top: 5px!important;
+    margin-bottom:0px!important;
+}
+
+input{
+    max-height: 30px;
+}
+
+.header-top{
+   margin-bottom:-2%;
+    margin-top: -4.5%;
+}
+
+.button{
+    margin-top: 2%!important;
 }
