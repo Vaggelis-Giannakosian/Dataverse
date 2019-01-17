@@ -12,8 +12,7 @@ public class UserRegisterForm {
     private static final String MAIL_PATTERN = "[a-z0-9._%+-]+@[a-z0-9.-]+\\.[a-z]{2,}$";
     private static final int PASSWORD_MINSIZE = 8;
     private static final int PHONE_NUMBER_SIZE=10;
-    private static final String PASSWORD_PATTERN = "^[a-zA-Z0-9@#$%^&]*$";
-
+    private static final String PASSWORD_PATTERN = "^(?=.*?[a-zA-Z])(?=.*?[0-9])(?=.*?[#?!@$%^&*-]).{8,}$";
 
     private Long id;
 
