@@ -12,19 +12,23 @@ public class UserRegisterForm {
     private static final String MAIL_PATTERN = "[a-z0-9._%+-]+@[a-z0-9.-]+\\.[a-z]{2,}$";
     private static final int PASSWORD_MINSIZE = 8;
     private static final int PHONE_NUMBER_SIZE=10;
+    private static final int MINIMUM_ONE=1;
+    private static final int MINIMUM_ZERO=0;
     private static final String PASSWORD_PATTERN = "^(?=.*?[a-zA-Z])(?=.*?[0-9])(?=.*?[#?!@$%^&*-]).{8,}$";
 
     private Long id;
 
 
     @Pattern(regexp = NAME_PATTERN, message = "The First Name cannot be empty and must contains only letters.")
+    @Size(min=MINIMUM_ONE , message = "You must enter the First Name.")
     private String firstName;
 
     @Pattern(regexp = NAME_PATTERN, message = "The Last Name cannot be empty and must contains only letters.")
+    @Size(min=MINIMUM_ONE , message = "You must enter the Last Name.")
     private String lastName;
 
     //TODO change the password regexp
-    @Pattern(regexp = PASSWORD_PATTERN, message="Password should.....")
+    @Pattern(regexp = PASSWORD_PATTERN, message="Password should contain at least 1 number, 1 digit and 1 special character.")
     @Size(min = PASSWORD_MINSIZE , message = "Password must contain more than 8 characters.")
     private String password;
 
@@ -33,7 +37,7 @@ public class UserRegisterForm {
     private String email;
 
     @Pattern(regexp = PHONE_NUMBER_PATTERN , message="The telephone number should contain only digits.")
-    @Size(min = PHONE_NUMBER_SIZE,max = PHONE_NUMBER_SIZE, message = "The phone number should contain 10 digits.")
+    @Size(min = MINIMUM_ZERO ,max = PHONE_NUMBER_SIZE, message = "The phone number should contain maximum 10 digits.")
     private String phoneNumber;
 
     private String company;

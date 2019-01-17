@@ -19,7 +19,7 @@
                     <div class="col-12 col-md-8 col-lg-8 col-xl-6">
                         <div class="row">
                             <div class="col text-center">
-                                <h1>Register</h1>
+                                <h1 style="margin-bottom:-2%;">Register</h1>
                             </div>
                         </div>
 
@@ -47,7 +47,7 @@
                                 <@spring.bind "userRegisterForm.email"/>
                                 <input type="email" class="form-control" name="email" placeholder="Email">
                                 <#list spring.status.errorMessages as error>
-                                    <span>${error}</span>
+                                    <span><cite> ${error} </cite></span>
                                 </#list>
                             </div>
                         </div>
@@ -67,18 +67,20 @@
                                 </#list>
                             </div>
                         </div>
-                        <div class="row align-items-center mt-4 form-narrow ">
-                            <div class="col">
-                                <@spring.bind "userRegisterForm.password"/>
-                                <input type="password" class="form-control" name="password" placeholder="Password">
-                                <#list spring.status.errorMessages as error>
-                                    <span>${error}</span>
-                                </#list>
-                            </div>
-                            <div class="col">
-                                <input type="password" class="form-control" name="passwordConfirm" placeholder="Confirm Password">
-                            </div>
-                        </div>
+                       <div class="row align-items-center form-narrow">
+                           <div class="col mt-4">
+                               <@spring.bind "userRegisterForm.password"/>
+                                   <input type="password" class="form-control" name="password" placeholder="Password">
+                               <#list spring.status.errorMessages as error>
+                                   <span>${error}</span>
+                               </#list>
+                           </div>
+                       </div>
+                       <div class="row align-items-center form-narrow">
+                           <div class="col mt-4">
+                               <input type="password" class="form-control" name="passwordConfirm" placeholder="Confirm Password">
+                           </div>
+                       </div>
                         <div class="row justify-content-start mt-4 form-narrow">
                             <div class="col">
                                 <button class="btn btn-primary mt-4">Submit</button>
