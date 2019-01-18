@@ -17,7 +17,7 @@ public class RegisterFormToUserMapper {
         userDtoCreate.setPassword(userRegisterForm.getPassword());
         userDtoCreate.setUserEmail(userRegisterForm.getEmail());
         userDtoCreate.setUserCompany(userRegisterForm.getCompany());
-        userDtoCreate.setUserPhoneNumber(Long.parseLong(userRegisterForm.getPhoneNumber()));
+        userDtoCreate.setUserPhoneNumber(userRegisterForm.getPhoneNumber());
 
         return userDtoCreate;
     }

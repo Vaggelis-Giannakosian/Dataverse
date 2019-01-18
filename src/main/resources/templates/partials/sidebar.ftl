@@ -10,7 +10,7 @@
             <li class="nav-item">
                 <a class="nav-link" href="/home/edit">
                     <span data-feather="users"></span>
-                    Profile
+                    Edit Profile
                 </a>
             </li>
 

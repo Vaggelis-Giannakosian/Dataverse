@@ -49,4 +49,28 @@ public class UserServiceImpl implements UserService {
         return false;
     }
 
+    public User getUserProfile(String email){
+        return userRepository.findUserByUserEmail(email);
+    }
+
+    @Override
+    public void updateUser(UserDtoCreate userDtoCreate, Long id) {
+
+        User user = userRepository.findUserByUserId(id);
+
+
+        user.setUserFirstName(userDtoCreate.getUserFirstName());
+        user.setUserLastName(userDtoCreate.getUserLastName());
+        user.setUserEmail(userDtoCreate.getUserEmail());
+        user.setUserCompany(userDtoCreate.getUserCompany());
+        user.setUserPhoneNumber(userDtoCreate.getUserPhoneNumber());
+        user.setUserPassword(userDtoCreate.getPassword());
+
+
+        userRepository.save(user);
+
+    }
+
+
+
 }

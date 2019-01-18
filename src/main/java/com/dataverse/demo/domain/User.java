@@ -25,12 +25,12 @@ public class User {
     @Column(name = "user_last_name", length = MAX_NAME_LENGTH)
     private String userLastName;
 
-    @Column(name = "user_email",length = MAX_NAME_LENGTH, nullable = false)
+    @Column(name = "user_email",length = MAX_NAME_LENGTH, nullable = false , unique = true)
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private String userEmail;
 
     @Column(name = "user_phone_number",length = MAX_PHONE_LENGTH)
-    private Long userPhoneNumber;
+    private String userPhoneNumber;
 
     @Column(name = "user_company",length = MAX_PHONE_LENGTH)
     private String userCompany;
@@ -73,11 +73,11 @@ public class User {
         this.userEmail = userEmail;
     }
 
-    public Long getUserPhoneNumber() {
+    public String getUserPhoneNumber() {
         return userPhoneNumber;
     }
 
-    public void setUserPhoneNumber(Long userPhoneNumber) {
+    public void setUserPhoneNumber(String userPhoneNumber) {
         this.userPhoneNumber = userPhoneNumber;
     }
 

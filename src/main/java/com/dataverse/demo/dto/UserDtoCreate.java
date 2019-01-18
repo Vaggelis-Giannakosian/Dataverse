@@ -2,18 +2,18 @@ package com.dataverse.demo.dto;
 
 public class UserDtoCreate {
 
-    private Long userPhoneNumber;
+    private String userPhoneNumber;
     private String userFirstName;
     private String userLastName;
     private String userEmail;
     private String password;
     private String userCompany;
 
-    public Long getUserPhoneNumber() {
+    public String getUserPhoneNumber() {
         return userPhoneNumber;
     }
 
-    public void setUserPhoneNumber(Long userPhoneNumber) {
+    public void setUserPhoneNumber(String userPhoneNumber) {
         this.userPhoneNumber = userPhoneNumber;
     }
 
