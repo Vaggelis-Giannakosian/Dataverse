@@ -3,13 +3,11 @@ package com.dataverse.demo.forms;
 import javax.validation.constraints.Pattern;
 import javax.validation.constraints.Size;
 
-public class UserRegisterForm {
-
+public class UserEditForm {
 
 
     private static final String NAME_PATTERN = "^[a-zA-Z]*$";
     private static final String PHONE_NUMBER_PATTERN = "^[0-9]*$";
-    private static final String MAIL_PATTERN = "[a-z0-9._%+-]+@[a-z0-9.-]+\\.[a-z]{2,}$";
     private static final int PASSWORD_MINSIZE = 8;
     private static final int PHONE_NUMBER_SIZE=10;
     private static final int MINIMUM_ONE=1;
@@ -26,13 +24,11 @@ public class UserRegisterForm {
     @Pattern(regexp = NAME_PATTERN, message = "The Last Name cannot be empty and must contains only letters.")
     @Size(min=MINIMUM_ONE , message = "You must enter the Last Name.")
     private String lastName;
- 
+
     @Pattern(regexp = PASSWORD_PATTERN, message="Password should contain at least 1 number, 1 digit and 1 special character.")
     @Size(min = PASSWORD_MINSIZE , message = "Password must contain more than 8 characters.")
     private String password;
 
-
-    @Pattern(regexp = MAIL_PATTERN, message = "Invalid mail format.")
     private String email;
 
     @Pattern(regexp = PHONE_NUMBER_PATTERN , message="The telephone number should contain only digits.")
@@ -40,6 +36,14 @@ public class UserRegisterForm {
     private String phoneNumber;
 
     private String company;
+
+    public String getEmail() {
+        return email;
+    }
+
+    public void setEmail(String email) {
+        this.email = email;
+    }
 
     public Long getId() {
         return id;
@@ -71,14 +75,6 @@ public class UserRegisterForm {
 
     public void setPassword(String password) {
         this.password = password;
-    }
-
-    public String getEmail() {
-        return email;
-    }
-
-    public void setEmail(String email) {
-        this.email = email;
     }
 
     public String getPhoneNumber() {

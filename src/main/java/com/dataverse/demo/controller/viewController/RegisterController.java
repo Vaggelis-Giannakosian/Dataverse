@@ -1,5 +1,6 @@
 package com.dataverse.demo.controller.viewController;
 
+import com.dataverse.demo.domain.EnumUserType;
 import com.dataverse.demo.dto.UserDtoCreate;
 import com.dataverse.demo.forms.UserRegisterForm;
 import com.dataverse.demo.mapper.RegisterFormToUserMapper;
@@ -54,13 +55,12 @@ public class RegisterController {
                            BindingResult bindingResult) {
 
         if (bindingResult.hasErrors()) {
-            //have some error handling here, perhaps add extra error messages to the model
-//            model.addAttribute(ERROR_MESSAGE, "an error occurred");
             return "Register";
         }
         try{
-            UserDtoCreate personDtoCreate = mapper.userDtoCreate(userRegisterForm);
-            userService.create(personDtoCreate);
+            UserDtoCreate userDtoCreate = mapper.userDtoCreate(userRegisterForm);
+            userDtoCreate.setUserType(EnumUserType.USER);
+            userService.create(userDtoCreate);
             return "redirect:/";
         }catch (Exception ex) {
             model.addAttribute(REGISTER_FORM, userRegisterForm);

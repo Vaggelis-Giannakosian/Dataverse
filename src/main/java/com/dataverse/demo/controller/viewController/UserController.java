@@ -2,12 +2,16 @@ package com.dataverse.demo.controller.viewController;
 
 import com.dataverse.demo.domain.User;
 import com.dataverse.demo.dto.UserDtoCreate;
+import com.dataverse.demo.forms.UserEditForm;
 import com.dataverse.demo.forms.UserRegisterForm;
+import com.dataverse.demo.mapper.EditFormToUserMapper;
 import com.dataverse.demo.mapper.RegisterFormToUserMapper;
 import com.dataverse.demo.mapper.UserToFormMapper;
 import com.dataverse.demo.service.UserServiceImpl;
-import com.dataverse.demo.validators.RegisterValidator;
+import com.dataverse.demo.validators.EditValidator;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.core.Authentication;
+import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
@@ -22,12 +26,12 @@ import javax.validation.Valid;
 @Controller
 public class UserController {
     public static final String ERROR_MESSAGE = "errorMessage";
-    private static final String REGISTER_FORM = "userRegisterForm";
+    private static final String REGISTER_FORM = "userEditForm";
 
-    private RegisterValidator registerValidator;
+    private EditValidator editValidator;
 
     @Autowired
-    private RegisterFormToUserMapper mapper;
+    private EditFormToUserMapper mapper;
 
     @Autowired
     private UserToFormMapper userMapper;
@@ -37,16 +41,16 @@ public class UserController {
 
     @InitBinder(REGISTER_FORM)
     protected void initBinder(final WebDataBinder binder) {
-        binder.addValidators(registerValidator);
+        binder.addValidators(editValidator);
     }
 
 
 
     @GetMapping("/home")
     public String home(Model model ) {
+        Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
+        User user = userService.getUserProfile(authentication.getName());
 
-//      Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
-        User user = userService.getUserProfile("e.giannakosian@gmail.com");
         model.addAttribute("user",user);
 
         return "Home";
@@ -55,9 +59,10 @@ public class UserController {
     @GetMapping("/home/edit")
     public String edit(Model model ) {
         if (!model.asMap().containsKey(REGISTER_FORM)) {
-            User user = userService.getUserProfile("e.giannakosian@gmail.com");
-            UserRegisterForm userRegisterForm = userMapper.userRegisterForm(user);
-            model.addAttribute(REGISTER_FORM, userRegisterForm);
+            Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
+            User user = userService.getUserProfile(authentication.getName());
+            UserEditForm userEditForm = userMapper.userEditForm(user);
+            model.addAttribute(REGISTER_FORM, userEditForm);
         }
         return "UserEdit";
 
@@ -66,20 +71,21 @@ public class UserController {
     @PostMapping("/home/edit")
     public String editUpdate(Model model,
                              @Valid @ModelAttribute(REGISTER_FORM)
-                                     UserRegisterForm userRegisterForm,
+                                     UserEditForm userEditForm,
                              BindingResult bindingResult ){
 
     if (bindingResult.hasErrors()) {
         model.addAttribute(ERROR_MESSAGE, "an error occurred");
         return "UserEdit";
     }try {
-            User user = userService.getUserProfile("e.giannakosian@gmail.com");
-            UserDtoCreate userDtoCreate = mapper.userDtoCreate(userRegisterForm);
+            Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
+            User user = userService.getUserProfile(authentication.getName());
+            UserDtoCreate userDtoCreate = mapper.userDtoCreate(userEditForm);
+            userDtoCreate.setUserEmail(user.getUserEmail());
             userService.updateUser(userDtoCreate, user.getUserId());
             return "redirect:/home";
         } catch (Exception ex) {
-            model.addAttribute(REGISTER_FORM, userRegisterForm);
-            model.addAttribute("error", "Couldn't update profile. The Email already exists.");
+            model.addAttribute(REGISTER_FORM, userEditForm);
             return "UserEdit";
         }
 

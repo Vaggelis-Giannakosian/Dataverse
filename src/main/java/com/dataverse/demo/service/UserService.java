@@ -11,6 +11,6 @@ public interface UserService {
 
     User getUserProfile(String email);
     void updateUser(UserDtoCreate userDtoCreate,Long id);
-
+    User getUserForLogIn(String email, String password);
 
 }

@@ -27,7 +27,6 @@
                 <tr>
                     <th scope="col">First Name</th>
                     <th scope="col">Last Name</th>
-                    <th scope="col">Email</th>
                     <th scope="col">Phone Number</th>
                     <th scope="col">Company</th>
                     <th scope="col">Password</th>
@@ -37,38 +36,33 @@
                 </thead>
                 <tbody>
                 <tr>
-                    <@spring.bind "userRegisterForm.firstName"/>
-                    <td><input class="form-control"  type="text" name="firstName" value="${userRegisterForm.firstName!""}" required></td>
+                    <@spring.bind "userEditForm.firstName"/>
+                    <td><input class="form-control"  type="text" name="firstName" value="${userEditForm.firstName!""}" required></td>
                     <#list spring.status.errorMessages as error>
                         <span class="error-message"><cite class="error-message" >${error} </cite></span>
                     </#list>
-                    <@spring.bind "userRegisterForm.lastName"/>
-                    <td><input class="form-control" type="text" name="lastName" value="${userRegisterForm.lastName!""}" required></td>
+                    <@spring.bind "userEditForm.lastName"/>
+                    <td><input class="form-control" type="text" name="lastName" value="${userEditForm.lastName!""}" required></td>
                     <#list spring.status.errorMessages as error>
                         <span class="error-message"><cite class="error-message" >${error} </cite></span>
                     </#list>
-                    <@spring.bind "userRegisterForm.email"/>
-                    <td><input class="form-control" type="email" name="email" value="${userRegisterForm.email!""}" required></td>
+                    <@spring.bind "userEditForm.phoneNumber"/>
+                    <td><input class="form-control" type="text"  name="phoneNumber" value="${userEditForm.phoneNumber!""}"></td>
                     <#list spring.status.errorMessages as error>
                         <span class="error-message"><cite class="error-message" >${error} </cite></span>
                     </#list>
-                    <@spring.bind "userRegisterForm.phoneNumber"/>
-                    <td><input class="form-control" type="text"  name="phoneNumber" value="${userRegisterForm.phoneNumber!""}"></td>
+                    <@spring.bind "userEditForm.company"/>
+                    <td><input class="form-control" type="text" name="company" value="${userEditForm.company!""}"></td>
                     <#list spring.status.errorMessages as error>
                         <span class="error-message"><cite class="error-message" >${error} </cite></span>
                     </#list>
-                    <@spring.bind "userRegisterForm.company"/>
-                    <td><input class="form-control" type="text" name="company" value="${userRegisterForm.company!""}"></td>
+                    <@spring.bind "userEditForm.password"/>
+                    <td><input class="form-control" id="password" type="password" name="password" value="${userEditForm.password!""}" required></td>
                     <#list spring.status.errorMessages as error>
                         <span class="error-message"><cite class="error-message" >${error} </cite></span>
                     </#list>
-                    <@spring.bind "userRegisterForm.password"/>
-                    <td><input class="form-control" id="password" type="password" name="password" value="${userRegisterForm.password!""}" required></td>
-                    <#list spring.status.errorMessages as error>
-                        <span class="error-message"><cite class="error-message" >${error} </cite></span>
-                    </#list>
-                    <@spring.bind "userRegisterForm.firstName"/>
-                    <td><input class="form-control" id="confirm_password" type="password" name="" value="${userRegisterForm.password!""}" required></td>
+                    <@spring.bind "userEditForm.firstName"/>
+                    <td><input class="form-control" id="confirm_password" type="password" name="" value="${userEditForm.password!""}" required></td>
                     <td><button class="btn btn-success btn-sm" type="submit">Update Profile</button></td>
                 </tr>
                 </tbody>
@@ -78,11 +72,6 @@
 
     </div>
 </div>
-<#if error?has_content >
-
-<script>alert("${error}");</script>
-
-</#if>
 
 <#include "partials/scripts.ftl">
 

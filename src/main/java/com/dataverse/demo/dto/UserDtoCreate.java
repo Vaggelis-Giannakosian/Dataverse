@@ -1,5 +1,7 @@
 package com.dataverse.demo.dto;
 
+import com.dataverse.demo.domain.EnumUserType;
+
 public class UserDtoCreate {
 
     private String userPhoneNumber;
@@ -8,6 +10,15 @@ public class UserDtoCreate {
     private String userEmail;
     private String password;
     private String userCompany;
+    private EnumUserType userType;
+
+    public EnumUserType getUserType() {
+        return userType;
+    }
+
+    public void setUserType(EnumUserType userType) {
+        this.userType = userType;
+    }
 
     public String getUserPhoneNumber() {
         return userPhoneNumber;

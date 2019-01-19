@@ -1,11 +1,6 @@
 package com.dataverse.demo.domain;
 
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
-import javax.persistence.Table;
+import javax.persistence.*;
 
 @Entity
 @Table(name = "USERS")
@@ -32,11 +27,23 @@ public class User {
     @Column(name = "user_phone_number",length = MAX_PHONE_LENGTH)
     private String userPhoneNumber;
 
-    @Column(name = "user_company",length = MAX_PHONE_LENGTH)
+    @Column(name = "user_company", length = MAX_NAME_LENGTH)
     private String userCompany;
 
-    @Column(name = "user_pass",length = MAX_NAME_LENGTH)
+    @Column(name = "user_pass", length = MAX_NAME_LENGTH)
     private String userPassword;
+
+    @Enumerated(EnumType.STRING)
+    @Column(name = "userType", nullable = false)
+    private EnumUserType userType;
+
+    public EnumUserType getUserType() {
+        return userType;
+    }
+
+    public void setUserType(EnumUserType userType) {
+        this.userType = userType;
+    }
 
     public User() {
     }

@@ -28,7 +28,7 @@ public class UserServiceImpl implements UserService {
             user.setUserLastName(userDtoCreate.getUserLastName());
             user.setUserCompany(userDtoCreate.getUserCompany());
             user.setUserPhoneNumber(userDtoCreate.getUserPhoneNumber());
-
+            user.setUserType(userDtoCreate.getUserType());
             User savedUser = userRepository.save(user);
         }else{
             throw new UserExistsException("Person with email: "+userDtoCreate.getUserEmail()+" already exists ");
@@ -70,6 +70,10 @@ public class UserServiceImpl implements UserService {
 
     }
 
+    @Override
+    public User getUserForLogIn(String email, String password) {
+        return userRepository.findUserByUserEmailIsAndAndUserPasswordIs(email,password);
+    }
 
 
 }
