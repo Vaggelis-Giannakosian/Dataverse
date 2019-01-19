@@ -12,7 +12,7 @@ import java.io.IOException;
 
 @Component
 public class LogOutHandler {
-    private static final String LOG_OUT_URL = "/";
+    private static final String LOG_OUT_URL = "/login";
 
 
     private RedirectStrategy redirectStrategy = new DefaultRedirectStrategy();

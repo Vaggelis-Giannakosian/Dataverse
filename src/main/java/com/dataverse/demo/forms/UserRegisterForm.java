@@ -26,7 +26,7 @@ public class UserRegisterForm {
     @Pattern(regexp = NAME_PATTERN, message = "The Last Name cannot be empty and must contains only letters.")
     @Size(min=MINIMUM_ONE , message = "You must enter the Last Name.")
     private String lastName;
- 
+
     @Pattern(regexp = PASSWORD_PATTERN, message="Password should contain at least 1 number, 1 digit and 1 special character.")
     @Size(min = PASSWORD_MINSIZE , message = "Password must contain more than 8 characters.")
     private String password;
