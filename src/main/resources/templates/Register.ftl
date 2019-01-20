@@ -6,6 +6,8 @@
 
     <!-- Custom styles for this template -->
     <link href="/styles/registerPage.css" rel="stylesheet">
+    <script src='https://www.google.com/recaptcha/api.js?render=6LdYHYsUAAAAAHR51TAECQsxBoKqrdN2YcNHXT1Q'></script>
+
 </head>
 
 <body  >
@@ -14,87 +16,102 @@
 
 
 
-            <div class="container" style="margin-top: 7%;">
-                <div class="row justify-content-center">
-                    <div class="col-12 col-md-8 col-lg-8 col-xl-6">
-                        <div class="row">
-                            <div class="col text-center">
-                                <h1 class="header-top">Register</h1>
-                            </div>
-                        </div>
+            <div class="container-fluid" style="margin-top: 7%;">
+                <div class="row  ">
+                    <main role="main" class="col-md-9 ml-sm-auto col-lg-10 px-4">
+                        <main class="my-form form-margin">
+                            <div class="container">
+                                <div class="row justify-content-center">
+                                    <div class="col-md-10">
+                                        <div class="card">
+                                            <div class="card-header">Register</div>
+                                            <div class="card-body">
+                                                <form name="create-user" id="create-user" onsubmit="" action="/register" method="post">
 
-                   <form action="/register" method="post">
-                        <div class="row align-items-center form-narrow" >
-                            <div class="col mt-4">
-                                <label class="form-label" for="firstName">First Name</label>
-                                <@spring.bind "userRegisterForm.firstName"/>
-                                <input type="text" class="form-control" value="${userRegisterForm.firstName!""}" name="firstName" placeholder="First Name" required>
-                                <#list spring.status.errorMessages as error>
-                                    <span class="error-message"><cite class="error-message" >${error} </cite></span>
-                                </#list>
-                            </div>
-                        </div>
-                        <div class="row align-items-center form-narrow">
-                            <div class="col mt-4">
-                                <label class="form-label" for="lastName">Last Name</label>
-                                <@spring.bind "userRegisterForm.lastName"/>
-                                <input type="text" class="form-control" value="${userRegisterForm.lastName!""}" name="lastName" placeholder="Last Name" required>
-                                <#list spring.status.errorMessages as error>
-                                    <span class="error-message"><cite >${error} </cite></span>
-                                </#list>
-                            </div>
-                        </div>
-                        <div class="row align-items-center mt-4 form-narrow">
-                            <div class="col">
-                                <label class="form-label" for="email">Email</label>
-                                <@spring.bind "userRegisterForm.email"/>
-                                <input type="email" class="form-control" value="${userRegisterForm.email!""}" name="email" placeholder="Email" required>
-                                <#list spring.status.errorMessages as error>
-                                    <span class="error-message"><cite > ${error} </cite></span>
-                                </#list>
-                            </div>
-                        </div>
-                        <div class="row align-items-center form-narrow">
-                            <div class="col mt-4">
-                                <label class="form-label" for="company">Company Name</label>
-                                <@spring.bind "userRegisterForm.company"/>
-                                <input type="text" class="form-control" value="${userRegisterForm.company!""}" name="company" placeholder="Company Name">
-                            </div>
-                        </div>
-                        <div class="row align-items-center form-narrow ">
-                            <div class="col mt-4 ">
-                                <label class="form-label" for="phoneNumber">Phone Number</label>
-                                <@spring.bind "userRegisterForm.phoneNumber"/>
-                                <input type="text" class="form-control" value="${userRegisterForm.phoneNumber!""}"  name="phoneNumber" placeholder="Phone Number">
-                                <#list spring.status.errorMessages as error>
-                                    <span class="error-message"><cite >${error} </cite></span>
-                                </#list>
-                            </div>
-                        </div>
+                                                    <div class="form-group row">
+                                                        <label for="firstName" class="col-md-2 col-form-label text-md-right">First Name</label>
+                                                        <div class="col-md-8">
+                                                            <@spring.bind "userRegisterForm.firstName"/>
+                                                            <input type="text" class="form-control" value="${userRegisterForm.firstName!""}" name="firstName" placeholder="" required>
+                                                            <#list spring.status.errorMessages as error>
+                                                                <span class="error-message"><cite class="error-message" >${error} </cite></span>
+                                                            </#list>
+                                                        </div>
+                                                    </div>
+                                                    <div class="form-group row">
+                                                        <label for="lastName" class="col-md-2 col-form-label text-md-right">Last Name</label>
+                                                        <div class="col-md-8">
+                                                            <@spring.bind "userRegisterForm.lastName"/>
+                                                            <input type="text" class="form-control" value="${userRegisterForm.lastName!""}" name="lastName" placeholder="" required>
+                                                            <#list spring.status.errorMessages as error>
+                                                                <span class="error-message"><cite >${error} </cite></span>
+                                                            </#list>
+                                                        </div>
+                                                    </div>
 
-                       <div class="row align-items-center form-narrow">
-                           <div class="col mt-4">
-                               <label class="form-label" for="password">Password</label>
-                               <@spring.bind "userRegisterForm.password"/>
-                                   <input type="password" class="form-control" id ="password" name="password" placeholder="Password" required>
-                               <#list spring.status.errorMessages as error>
-                                   <span class="error-message"><cite >${error} </cite></span>
-                               </#list>
-                           </div>
-                       </div>
-                       <div class="row align-items-center form-narrow">
-                           <div class="col mt-4">
-                               <label class="form-label" for="confirm_password">Confirm Password</label>
-                               <input type="password" class="form-control" id ="confirm_password" name="confirm_password" placeholder="Confirm Password" required>
-                           </div>
-                       </div>
-                        <div class="row justify-content-start mt-4 form-narrow">
-                            <div class="col">
-                                <button class="button btn btn-primary mt-4">Submit</button>
+                                                    <div class="form-group row">
+                                                        <label for="email" class="col-md-2 col-form-label text-md-right">Email</label>
+                                                        <div class="col-md-8">
+                                                            <@spring.bind "userRegisterForm.email"/>
+                                                            <input type="email" class="form-control" value="${userRegisterForm.email!""}" name="email" placeholder="" required>
+                                                            <#list spring.status.errorMessages as error>
+                                                                <span class="error-message"><cite > ${error} </cite></span>
+                                                            </#list>
+                                                        </div>
+                                                    </div>
+                                                    <div class="form-group row">
+                                                        <label for="company" class="col-md-2 col-form-label text-md-right">Company</label>
+                                                        <div class="col-md-8">
+                                                            <@spring.bind "userRegisterForm.company"/>
+                                                            <input type="text" class="form-control" value="${userRegisterForm.company!""}" name="company" placeholder="">
+                                                        </div>
+                                                    </div>
+
+                                                    <div class="form-group row">
+                                                        <label for="phoneNumber" class="col-md-2 col-form-label text-md-right">Phone Number</label>
+                                                        <div class="col-md-8">
+                                                            <@spring.bind "userRegisterForm.phoneNumber"/>
+                                                            <input type="text" class="form-control" value="${userRegisterForm.phoneNumber!""}"  name="phoneNumber" placeholder="">
+                                                            <#list spring.status.errorMessages as error>
+                                                                <span class="error-message"><cite >${error} </cite></span>
+                                                            </#list>
+                                                        </div>
+                                                    </div>
+                                                    <div class="form-group row">
+                                                        <label for="password" class="col-md-2 col-form-label text-md-right">Password</label>
+                                                        <div class="col-md-8">
+                                                            <@spring.bind "userRegisterForm.password"/>
+                                                                <input type="password" class="form-control" id ="password" name="password" placeholder="Password" required>
+                                                            <#list spring.status.errorMessages as error>
+                                                                <span class="error-message"><cite >${error} </cite></span>
+                                                            </#list>
+                                                        </div>
+                                                    </div>
+                                                    <div class="form-group row">
+                                                        <label for="confirm_password" class="col-md-2 col-form-label text-md-right">Confirm Password</label>
+                                                        <div class="col-md-8">
+                                                            <input type="password" class="form-control" id ="confirm_password" name="confirm_password" placeholder="Confirm Password" required>
+
+                                                        </div>
+                                                    </div>
+                                                    <div class="col-md-4 offset-md-2">
+                                                        <button type="reset" class="btn btn-default">
+                                                            Reset
+                                                        </button>
+                                                        <button type="submit" class="btn btn-primary">
+                                                            Register
+                                                        </button>
+                                                    </div>
+                                            </div>
+                                            </form>
+
+                                        </div>
+                                    </div>
+                                </div>
                             </div>
-                        </div>
-                    </div>
-                    </form>
+
+                        </main>
+                    </main>
                 </div>
             </div>
 <#if errorMessage?has_content >
@@ -103,6 +120,13 @@
 
 </#if>
         <#include "partials/scripts.ftl">
-
+<script>
+    grecaptcha.ready(function() {
+        grecaptcha.execute('6LdYHYsUAAAAAHR51TAECQsxBoKqrdN2YcNHXT1Q', {action: '/register'})
+            .then(function(token) {
+// Verify the token on the server.
+            });
+    });
+</script>
 </body>
 </html>

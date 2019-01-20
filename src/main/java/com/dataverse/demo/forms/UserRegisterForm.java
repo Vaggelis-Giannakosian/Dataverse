@@ -36,7 +36,7 @@ public class UserRegisterForm {
     private String email;
 
     @Pattern(regexp = PHONE_NUMBER_PATTERN , message="The telephone number should contain only digits.")
-    @Size(min = MINIMUM_ZERO ,max = PHONE_NUMBER_SIZE, message = "The phone number should contain maximum 10 digits.")
+    @Size(min = PHONE_NUMBER_SIZE ,max = PHONE_NUMBER_SIZE, message = "The phone number should contain maximum 10 digits.")
     private String phoneNumber;
 
     private String company;
