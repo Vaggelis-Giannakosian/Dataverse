@@ -5,16 +5,16 @@ import com.dataverse.demo.dto.UserDtoCreate;
 import com.dataverse.demo.forms.UserRegisterForm;
 import com.dataverse.demo.mapper.RegisterFormToUserMapper;
 import com.dataverse.demo.service.UserServiceImpl;
+import com.dataverse.demo.validators.ReCaptchaResponse;
 import com.dataverse.demo.validators.RegisterValidator;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpMethod;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.WebDataBinder;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.InitBinder;
-import org.springframework.web.bind.annotation.ModelAttribute;
-import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.*;
+import org.springframework.web.client.RestTemplate;
 
 import javax.validation.Valid;
 
@@ -47,26 +47,40 @@ public class RegisterController {
         return "Register";
     }
 
+    @Autowired
+    RestTemplate restTemplate;
 
-    @PostMapping(value = "/register")
-    public String register(Model model,
+    @RequestMapping(value = "/register" , method=RequestMethod.POST)
+    public String register(@RequestParam(name="g-recaptcha-response") String captchaResponse, Model model,
                            @Valid @ModelAttribute(REGISTER_FORM)
                                    UserRegisterForm userRegisterForm,
                            BindingResult bindingResult) {
+        String url="https://www.google.com/recaptcha/api/siteverify";
+        String params = "?secret=6LeTLYsUAAAAAOxhax-wcTg1qiJSJd7wRKqmcXEq&response="+captchaResponse;
+        ReCaptchaResponse reCaptchaResponse = restTemplate.exchange(url+params, HttpMethod.POST,null, ReCaptchaResponse.class).getBody();
+        if (reCaptchaResponse.isSuccess()){
 
-        if (bindingResult.hasErrors()) {
+            if (bindingResult.hasErrors()) {
+                return "Register";
+            }
+            try{
+                UserDtoCreate userDtoCreate = mapper.userDtoCreate(userRegisterForm);
+                userDtoCreate.setUserType(EnumUserType.USER);
+                userService.create(userDtoCreate);
+                return "redirect:/";
+            }catch (Exception ex) {
+                model.addAttribute(REGISTER_FORM, userRegisterForm);
+                model.addAttribute("errorMessage", "Registration could not be complete. Email already exists in Database.");
+                return "Register";
+            }
+
+        }else{
+            model.addAttribute("recaptcha","You must verify captcha before registration");
             return "Register";
         }
-        try{
-            UserDtoCreate userDtoCreate = mapper.userDtoCreate(userRegisterForm);
-            userDtoCreate.setUserType(EnumUserType.USER);
-            userService.create(userDtoCreate);
-            return "redirect:/";
-        }catch (Exception ex) {
-            model.addAttribute(REGISTER_FORM, userRegisterForm);
-            model.addAttribute("errorMessage", "Registration could not be complete. Email already exists in Database.");
-            return "Register";
-        }
+
+
+
     }
 
 }

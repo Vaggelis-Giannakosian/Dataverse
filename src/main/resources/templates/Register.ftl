@@ -6,7 +6,7 @@
 
     <!-- Custom styles for this template -->
     <link href="/styles/registerPage.css" rel="stylesheet">
-    <script src='https://www.google.com/recaptcha/api.js?render=6LdYHYsUAAAAAHR51TAECQsxBoKqrdN2YcNHXT1Q'></script>
+    <script src='https://www.google.com/recaptcha/api.js'></script>
 
 </head>
 
@@ -94,6 +94,9 @@
 
                                                         </div>
                                                     </div>
+                                                    <div class="captcha">
+                                                        <div class="g-recaptcha" data-sitekey="6LeTLYsUAAAAANv1eh-WRUbiCCkJPnZWv9tw4K_b"></div>
+                                                    </div>
                                                     <div class="col-md-4 offset-md-2">
                                                         <button type="reset" class="btn btn-default">
                                                             Reset
@@ -119,14 +122,10 @@
 <script>alert("${errorMessage}");</script>
 
 </#if>
+<#if  recaptcha?has_content >
+<script>alert("${recaptcha}");</script>
+</#if>
         <#include "partials/scripts.ftl">
-<script>
-    grecaptcha.ready(function() {
-        grecaptcha.execute('6LdYHYsUAAAAAHR51TAECQsxBoKqrdN2YcNHXT1Q', {action: '/register'})
-            .then(function(token) {
-// Verify the token on the server.
-            });
-    });
-</script>
+
 </body>
 </html>
