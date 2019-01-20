@@ -81,7 +81,7 @@
                                                         <label for="password" class="col-md-2 col-form-label text-md-right">Password</label>
                                                         <div class="col-md-8">
                                                             <@spring.bind "userRegisterForm.password"/>
-                                                                <input type="password" class="form-control" id ="password" name="password" placeholder="Password" required>
+                                                                <input type="password" class="form-control" id ="password" name="password" placeholder="" required>
                                                             <#list spring.status.errorMessages as error>
                                                                 <span class="error-message"><cite >${error} </cite></span>
                                                             </#list>
@@ -90,7 +90,7 @@
                                                     <div class="form-group row">
                                                         <label for="confirm_password" class="col-md-2 col-form-label text-md-right">Confirm Password</label>
                                                         <div class="col-md-8">
-                                                            <input type="password" class="form-control" id ="confirm_password" name="confirm_password" placeholder="Confirm Password" required>
+                                                            <input type="password" class="form-control" id ="confirm_password" name="confirm_password" placeholder="" required>
 
                                                         </div>
                                                     </div>
@@ -98,9 +98,6 @@
                                                         <div class="g-recaptcha" data-sitekey="6LeTLYsUAAAAANv1eh-WRUbiCCkJPnZWv9tw4K_b"></div>
                                                     </div>
                                                     <div class="col-md-4 offset-md-2">
-                                                        <button type="reset" class="btn btn-default">
-                                                            Reset
-                                                        </button>
                                                         <button type="submit" class="btn btn-primary">
                                                             Register
                                                         </button>

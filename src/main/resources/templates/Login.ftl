@@ -19,7 +19,9 @@
     <label for="inputPassword" class="sr-only">Password</label>
     <input name="password" type="password" id="inputPassword" class="form-control" placeholder="Password" required>
     <button class="btn btn-lg btn-primary btn-block" type="submit">Sign in</button>
-    <p class="mt-5 mb-3 text-muted">&copy; 2018-2019</p>
+    <p class="register-button">Don't already have an account? <a href="/register">Register</a></p>
+    <p class="mt-5 mb-3 text-muted">&copy; 2019-2020</p>
+
 </form>
 <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js"></script>
